@@ -1,6 +1,5 @@
 import numpy as np
 tabla=""
-acum=0
 acum_c=0
 ###########################################################################################
 def menu():
@@ -12,20 +11,25 @@ def menu():
             else:
                 break
     return(accion)
+def arrays():
+    acum=0
+    asientos_normal=np.ones([5,6],dtype="int32")
+    for i in range(5):
+        for e in range(6):
+            asientos_normal[i][e]=asientos_normal[i][e]+acum
+            acum=acum+1
+    asientos_vip=np.ones([2,6],dtype="int32")
+    for i in range(2):
+        for e in range(6):
+            asientos_vip[i][e]=asientos_vip[i][e]+acum
+            acum=acum+1
+    total_asientos_n=np.concatenate((asientos_normal,asientos_vip),axis=0,dtype="int32")
+    total_asientos=np.concatenate((asientos_normal,asientos_vip),axis=0,dtype="str")
+    return(total_asientos,total_asientos_n)
+
 ###########################################################################################
-asientos_normal=np.ones([5,6],dtype="int32")
-for i in range(5):
-    for e in range(6):
-        asientos_normal[i][e]=asientos_normal[i][e]+acum
-        acum=acum+1
-asientos_vip=np.ones([2,6],dtype="int32")
-for i in range(2):
-    for e in range(6):
-        asientos_vip[i][e]=asientos_vip[i][e]+acum
-        acum=acum+1
-total_asientos_n=np.concatenate((asientos_normal,asientos_vip),axis=0,dtype="int32")
-total_asientos=np.concatenate((asientos_normal,asientos_vip),axis=0,dtype="str")
-print(total_asientos)
+a,b=arrays()
+
 ###########################################################################################
 while True:
     a=menu()
