@@ -1,5 +1,4 @@
 import numpy as np
-tabla=""
 acum_c=0
 ###########################################################################################
 def menu():
@@ -26,27 +25,33 @@ def arrays():
     total_asientos_n=np.concatenate((asientos_normal,asientos_vip),axis=0,dtype="int32")
     total_asientos=np.concatenate((asientos_normal,asientos_vip),axis=0,dtype="str")
     return(total_asientos,total_asientos_n)
-
+def disponibles_num(total_asientos,total_asientos_n):
+    tabla=""
+    acum_c=0
+    for i in range(7):
+        for e in range(6):
+            acum_c=acum_c+1
+            if total_asientos[i][e].isnumeric():
+                numero=total_asientos_n[i][e]
+                
+                if numero < 10:
+                    tabla=tabla + "| "+ total_asientos[i][e]
+                if numero > 9:
+                    tabla=tabla + "|"+ total_asientos[i][e]
+            else:
+                tabla=tabla + "| "+ total_asientos[i][e]
+            if acum_c==6:
+                acum_c=0
+                tabla=tabla + "\n"
+    return(tabla)
 ###########################################################################################
 a,b=arrays()
 
 ###########################################################################################
 while True:
-    a=menu()
-    if a==1:
-        for i in range(7):
-                    for e in range(6):
-                        acum_c=acum_c+1
-                        if total_asientos[i][e].isnumeric():
-                            numero=total_asientos_n[i][e]
-                            
-                            if numero < 10:
-                                tabla=tabla + "| "+ total_asientos[i][e]
-                            if numero > 9:
-                                tabla=tabla + "|"+ total_asientos[i][e]
-                        else:
-                            tabla=tabla + "| "+ total_asientos[i][e]
-                        if acum_c==6:
-                            acum_c=0
-                            tabla=tabla + "\n"
-        print(tabla)
+    d=menu()
+    a[0][0]="x"
+    if d==1:
+        c=disponibles_num(a,b)
+        print(c)
+        input("ENTER..................")
