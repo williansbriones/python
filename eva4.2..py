@@ -1,5 +1,10 @@
 import numpy as np
-acum_c=0
+boleto=[]
+nombrePasajero=[]
+rut=[]
+telefono=[]
+banco=[]
+compra=[nombrePasajero,rut,telefono,banco]
 ###########################################################################################
 def menu():
     accion=int(input("Indique que accion decea realizar\n1)asientos disponibles\n2)comprar boletos\n3)anular vuelos\n4)Modificar datos de pasajero\n5)salir"))
@@ -43,15 +48,36 @@ def disponibles_num(total_asientos,total_asientos_n):
             if acum_c==6:
                 acum_c=0
                 tabla=tabla + "\n"
+    print(tabla)
     return(tabla)
+def compra_fun(total_asientos,total_asientos_n,check):
+    c=disponibles_num(total_asientos, total_asientos_n)
+    compra_us=input("que asiento dacea comprar")
+    cont_com=0
+    while True:
+        for i in range(5):
+            for e in range(6):
+                if total_asientos[i][e]==compra_us:
+                    cont_com=1
+                if cont_com==1:
+                    total_asientos[i][e]="x"
+                        break
+        compra_us=input("indique un asiento valido")
+       
+
+        
+                    
+        
+    
 ###########################################################################################
 a,b=arrays()
 
 ###########################################################################################
 while True:
     d=menu()
-    a[0][0]="x"
+    a[0][5]="x"
     if d==1:
         c=disponibles_num(a,b)
-        print(c)
         input("ENTER..................")
+    if d==2:
+        com=compra_fun(a,b,compra)
