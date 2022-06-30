@@ -53,15 +53,12 @@ def disponibles_num(total_asientos,total_asientos_n):
 def compra_fun(total_asientos,total_asientos_n,check):
     c=disponibles_num(total_asientos, total_asientos_n)
     compra_us=input("que asiento dacea comprar")
-    cont_com=0
     while True:
-        for i in range(5):
-            for e in range(6):
-                if total_asientos[i][e]==compra_us:
-                    cont_com=1
-                if cont_com==1:
-                    total_asientos[i][e]="x"
-                        break
+        for f in range(5):
+            for g in range(6):
+                if total_asientos[f][g]==compra_us:
+                    total_asientos[f][g]="x"
+                    break
         compra_us=input("indique un asiento valido")
        
 
